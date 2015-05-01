@@ -1,0 +1,29 @@
+<div class="listbox">
+  <div class="table_container full_width">
+    <div class="table_cell">
+      <angucomplete-alt id="ex1"
+                        placeholder="Press 'Enter' to add a tag"
+                        pause="100"
+                        selected-object="add"
+                        override-suggestions="true"
+                        clear-selected="true"
+                        local-data="options"
+                        search-fields="label"
+                        title-field="label"
+                        minlength="1"
+                        input-class="form-control form-control-small"/>
+    </div>
+    <!--<div class="table_cell" style="width: 34px;">-->
+      <!--<button class="btn btn-primary add_btn" ng-click="add()" ng-disabled="active_import == ''">+</button>-->
+    <!--</div>-->
+  </div>
+  <!--<input class="form-control" ng-model="active_tag" ng-autocomplete options="tags" />-->
+  <ul class="list-unstyled">
+    <li ng-repeat="item in items">
+      <div>
+        <span>{{item}}</span>
+        <div class="glyphicon glyphicon-remove pull-right" ng-click="remove(item)"></div>
+      </div>
+    </li>
+  </ul>
+</div>

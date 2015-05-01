@@ -1,0 +1,128 @@
+<div class="tab-pane col-sm-12 no_padding" ng-controller="_ShopCtrl" ng-init="Init()">
+  <div class="col-sm-12">
+    <div class="topper"><span>Shop Items</span></div>
+    <div class="col-sm-12 no_padding editor margin_bottom_10">
+      <div class="col-sm-3 no_padding selector">
+        <div class="section_title">
+          <span class="prima_nova_semibold">Current Items</span>
+        </div>
+        <div>
+          <ul class="list-unstyled" ng-class="{'disabled':edit_mode}">
+            <li ng-repeat="item in cooker_items" ng-class-even="'even'" ng-class-odd="'odd'">
+              <span>{{item.title}}</span><span class="glyphicon glyphicon-pencil pull-right" ng-click="Edit(item)"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-9 fields">
+        <form name="uploadForm">
+          <div>
+            <input class="form-control" placeholder="Item name" ng-model="shop.edit.name"/>
+          </div>
+          <div>
+            <input class="form-control" placeholder="Price" ng-model="shop.edit.price"/>
+          </div>
+          <div>
+            <input class="form-control" placeholder="Quantity left in stock" ng-model="shop.edit.qty"/>
+          </div>
+          <div>
+            <textarea class="form-control" placeholder="Description" ng-model="shop.edit.description"></textarea>
+          </div>
+          <div>
+            <select class="form-control" ng-model="shop.edit.img" ng-options="option.url as option.name for option in images | orderBy:'name'"></select>
+          </div>
+          <div>
+            <div checkbox label="Is Visible?" model="shop.edit.visible"></div>
+          </div>
+          <div>
+            <div listbox items="shop.edit.tags" options="cache.tags" new-tag="SaveTag"></div>
+          </div>
+          <div>
+            <div pairs-listbox items="shop.edit.details"></div>
+          </div>
+          <div>
+            <button class="btn btn-primary" ng-click="Save()">Save</button>
+            <button class="btn btn-default" ng-click="Reset()" ng-if="edit_mode">Cancel</button>
+            <button class="btn btn-danger pull-right" ng-click="Delete()" ng-if="edit_mode">Delete</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!--<div class="table_container full_width editor margin_bottom_10">-->
+      <!--<div class="table_cell selector">-->
+        <!--<div class="section_title">-->
+          <!--<span class="prima_nova_semibold">Current Items</span>-->
+        <!--</div>-->
+        <!--<div>-->
+          <!--<ul class="list-unstyled" ng-class="{'disabled':edit_mode}">-->
+            <!--<li ng-repeat="item in cooker_items" ng-class-even="'even'" ng-class-odd="'odd'">-->
+              <!--<span>{{item.title}}</span><span class="glyphicon glyphicon-pencil pull-right" ng-click="Edit(item)"></span>-->
+            <!--</li>-->
+          <!--</ul>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="table_cell fields">-->
+        <!--<form name="uploadForm">-->
+          <!--<div>-->
+            <!--<input class="form-control" placeholder="Item name" ng-model="shop.edit.name"/>-->
+          <!--</div>-->
+          <!--<div>-->
+            <!--<input class="form-control" placeholder="Price" ng-model="shop.edit.price"/>-->
+          <!--</div>-->
+          <!--<div>-->
+            <!--<input class="form-control" placeholder="Quantity left in stock" ng-model="shop.edit.qty"/>-->
+          <!--</div>-->
+          <!--<div>-->
+            <!--<textarea class="form-control" placeholder="Description" ng-model="shop.edit.description"></textarea>-->
+          <!--</div>-->
+          <!--<div>-->
+            <!--<select class="form-control" ng-model="shop.edit.img" ng-options="option.url as option.name for option in images | orderBy:'name'"></select>-->
+          <!--</div>-->
+          <!--<div>-->
+            <!--<div checkbox label="Is Visible?" model="shop.edit.visible"></div>-->
+          <!--</div>-->
+          <!--<div>-->
+            <!--TAG CONTROL-->
+          <!--</div>-->
+          <!--<div>-->
+            <!--Details CONTROL-->
+          <!--</div>-->
+          <!--<div>-->
+            <!--<button class="btn btn-primary" ng-click="Save()">Save</button>-->
+            <!--<button class="btn btn-default" ng-click="Reset()" ng-if="edit_mode">Cancel</button>-->
+            <!--<button class="btn btn-danger pull-right" ng-click="Delete()" ng-if="edit_mode">Delete</button>-->
+          <!--</div>-->
+        <!--</form>-->
+      <!--</div>-->
+    <!--</div>-->
+  </div>
+  <div class="col-sm-6 margin_bottom_10">
+    <div class="topper"><span>Add New Image</span></div>
+    <input name="name" class="form-control margin_bottom_10" placeholder="Name" ng-model="active_content.name" required />
+    <form drop-zone action="/api/images" class="dropzone margin_bottom_10" id="file-dropzone" options="dropzoneConfig" information="active_content" complete="UploadComplete" dropzone="dropzone">
+    </form>
+    <button class="btn btn-lg btn-block btn-danger"  ng-click="Upload()" ng-disabled="form.$invalid || current.files === 0">Upload Image</button>
+  </div>
+  <div class="col-sm-6">
+    <div class="topper"><span>Uploaded Images</span></div>
+    <div>
+      <ul class="list-unstyled">
+        <li class="image_thumb" ng-repeat="img in images">
+          <a ng-href="{{img.url}}" data-lightbox="{{img.name}}" data-title="{{img.name}}">
+            <div class="img_container">
+              <img ng-src="{{img.url}}"/>
+            </div>
+          </a>
+            <div class="prima_nova_semibold info">
+              <span>{{img.name | limitTo:45}}</span><span ng-if="img.name.length > 45">...</span>
+              <a class="pull-right" ng-click="Delete(img._id)"><span class="glyphicon glyphicon-trash"></span></a>
+            </div>
+        </li>
+      </ul>
+    </div>
+    <div class="margin_top_10">
+      <button class="btn btn-lg btn-block btn-danger"  ng-click="ClearAll()">Clear All</button>
+    </div>
+  </div>
+</div>

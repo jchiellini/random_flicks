@@ -1,0 +1,101 @@
+<nav ng-include="'components/navbar/navbar.html'" class="navbar-fixed-top"></nav>
+<div class="col-sm-12 shop" ng-init="Init()">
+  <div class="col-sm-4 col-sm-push-8">
+    <div class="shopping_cart">
+      <div class="col-sm-12 cart">
+        <div class="comix_loud col-sm-12">
+          <span>SHOPPING CART</span>
+        </div>
+        <div ng-if="cache.cart.items.length !== 0" class="col-sm-12 margin_top_10 no_padding">
+          <table class="full_width text-left table_fixed" style="height: 78px;">
+            <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th>Price</th>
+              <th>Quantity</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in cache.cart.items">
+              <td>
+                <div class="thumbnail no_margin">
+                  <img ng-src="{{item.img}}" style="width:70px;"/>
+                </div>
+              </td>
+              <td>
+                <span>{{item.name}}</span>
+              </td>
+              <td>
+                <span>${{item.price}}</span>
+              </td>
+              <td>
+                <div class="dropdown qty" ng-if="!item.expandQuantity">
+                  <button class="btn btn-default dropdown-toggle full_width text-left" type="button" id="dropdownQty_{{$index}}" data-toggle="dropdown" aria-expanded="true" ng-model="item.qty" ng-init="item.qty = 1;">
+                    <span class="arrow">{{item.qty || 1 }}</span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownQty_{{$index}}">
+                    <li role="presentation" ng-repeat="option in cart_options() track by $index" ng-click="item.qty = option;"><a role="menuitem" tabindex="-1" >{{option}}</a></li>
+                    <div class="divider"></div>
+                    <li role="presentation" ng-click="item.expandQuantity = true; item.qty = 10;"><a role="menuitem" tabindex="-1" >10+</a></li>
+                  </ul>
+                </div>
+                <input ng-if="item.expandQuantity" class="form-control" ng-model="item.qty" ng-pattern="'^[+]?[0-9]*$'" ng-blur="Prime(item,'qty')"/>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="subtotal margin_top_10">
+            <div class="sub_container">
+              <span>Subtotal (</span>{{cache.cart.totalItems()}}<span> item</span><span ng-if="cache.cart.totalItems() !== 1">s</span>
+              <span>): $</span>
+              <span>{{cache.cart.subtotal()}}</span>
+            </div>
+          </div>
+        </div>
+        <div ng-if="cache.cart.items.length === 0" class="text-center empty">
+          <span class="glyphicon glyphicon-shopping-cart"></span><span>Your Shopping Cart is empty</span>
+        </div>
+      </div>
+      <div class="col-sm-12 bottom_band">
+        <button class="btn btn-warning btn-block" ng-disabled="cache.cart.items.length === 0">Checkout</button>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-sm-8 col-sm-pull-4">
+    <div class="content_container">
+      <div class="col-sm-12 margin_top_10 margin_bottom_10" style="font-size: 22px;">
+         <span class="glyphicon glyphicon-tags margin_right_10"></span><span class="comix_loud">SHOP</span>
+      </div>
+      <div class="col-sm-12">
+        <div class="col-sm-12 margin_bottom_10 no_padding">
+          <input ng-model="search.$" class="form-control" placeholder="Search the shop" />
+        </div>
+        <!--<div class="col-sm-2 no_padding margin_bottom_10 margin_right_10 width_auto">-->
+          <!--<select class="form-control naked_select prima_nova_semibold" ng-model="sortBy" ng-init="sortBy = '-published.$t';">-->
+            <!--<option value="-published.$t" >Date</option>-->
+            <!--<option value="title.$t" >Title</option>-->
+            <!--<option value="-yt$statistics.viewCount" >Views</option>-->
+          <!--</select>-->
+        <!--</div>-->
+      </div>
+      <div class="col-sm-12">
+        <ul class="list-unstyled">
+          <li ng-repeat="item in store | filter:search | orderBy:sortBy" class="shop_thumb" ng-click="Add(item)">
+            <div class="img_container">
+              <img ng-src="{{item.img}}"/>
+            </div>
+            <div class="prima_nova_semibold">
+              <span>{{item.name | limitTo:45}}</span><span ng-if="item.name.length > 45">...</span>
+            </div>
+            <div class="info">
+              <span>${{item.price}}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

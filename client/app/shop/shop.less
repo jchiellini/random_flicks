@@ -1,0 +1,152 @@
+.shopping_cart{
+  position: fixed;
+  top:70px;
+  right:0;
+  z-index: 1000;
+  width: 33.33333333%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.shop{
+//  background-color: white;
+  padding-top:70px;
+  padding-right: 0;
+  padding-left: 0;
+
+  @media (max-width: 767px){
+    .shopping_cart{
+      position: static;
+//      top:70px;
+//      right:0;
+//      z-index: 1000;
+      width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .naked_select{
+    width: auto;
+    border: none;
+    box-shadow: none;
+    border-radius: 0 !important;
+  }
+
+  ul{
+    text-align: center;
+  }
+
+  .dropdown.qty{
+    .dropdown-menu{
+      min-width: 65px;
+    }
+  }
+
+  .arrow:after{
+    font-size: 12px;
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    content:"\25BE";
+  }
+
+  .content_container{
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 20px;
+//    width: 80%;
+//    background-color: white;
+
+    .shop_thumb{
+      cursor: pointer;
+      display:inline-block;
+      vertical-align: top;
+//      width:300px;
+//      height:350px;
+      padding:10px;
+      margin-right: 10px;
+//      border: 1px solid #ebebeb;
+
+      .img_container{
+        width:250px;
+//        height:300px;
+        overflow: hidden;
+        display: flex;
+
+        img{
+          width:100%;
+          align-self:center;
+        }
+      }
+
+      .info{
+        font-family: prima_nova_light;
+        font-size: 11px;
+
+        .bull{
+          margin:0 5px;
+        }
+      }
+    }
+  }
+
+  .cart{
+    min-height: 120px;
+    .thumbnail, .btn-default{
+      border:2px solid #f1da95;
+    }
+
+    .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default{
+     background-color: #fdffdc;
+    }
+
+    .empty{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -105px;
+      margin-top: -12px;
+
+      text-align: center;
+      vertical-align: middle;
+      font-family: prima_nova_semibold;
+      .glyphicon{
+        font-size: 30px;
+        top: 9px;
+      }
+    }
+
+    background: #dfc164 url('../assets/images/dots_yellow.png') repeat-x;
+    background-size: 36px 534px;
+    background-position: -60px;
+//    background-color: #dfc164;
+    padding: 15px;
+//    border-radius: 0 0 5px 5px;
+
+    th{
+      font-size:12px;
+      padding-left:5px;
+      border-bottom: 1px solid #efd585;
+    }
+    td{
+      vertical-align: middle;
+      padding:5px 0;
+      padding-left:5px;
+    }
+
+  }
+
+  .subtotal{
+    .sub_container{
+      font-family: prima_nova_semibold;
+    }
+  }
+
+  .bottom_band{
+    border-radius: 0 0 5px 5px;
+    background-color: #f1d87f;
+    padding: 10px 15px;
+  }
+
+}

@@ -1,0 +1,27 @@
+<nav ng-include="'components/navbar/navbar.html'" class="navbar-fixed-top"></nav>
+
+<div class="container padding_top_70">
+  <div class="row">
+    <div class="col-sm-12 table_container full_width">
+      <div class="table_cell">
+        <h3>Users</h3>
+      </div>
+      <div class="table_cell text-right vertical_align_middle">
+        <a href="/users/new">
+          <button class="btn btn-inverse btn-sm btn-primary">
+          Add User
+          </button>
+        </a>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="user in users">
+          <strong>{{user.name}}</strong><br>
+          <span class="text-muted">{{user.email}}</span>
+          <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right click"></span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

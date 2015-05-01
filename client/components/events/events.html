@@ -1,0 +1,30 @@
+<div class="events col-sm-12" ng-controller="EventsCtrl" ng-init="Init()">
+  <div class="col-sm-8 fancy billboard">
+    <ul class="slot">
+      <li ng-repeat="slot in slots">
+        <div style="width:196px; height:110px; overflow: hidden; display: flex;">
+          <img style="width:100%; align-self:center;" ng-src="{{slot.media$group.media$thumbnail[0].url}}" />
+        </div>
+      </li>
+    </ul>
+    <input type="button" id="playBtn" value="play">
+  </div>
+  <div class="col-sm-4 event_list">
+     <ul>
+       <li ng-repeat="event in events">
+         <div class="table_cell">
+           {{event.date}}
+         </div>
+         <div class="table_cell">
+           {{event.city}}
+         </div>
+         <div class="table_cell">
+           {{event.location}}
+         </div>
+         <div class="table_cell">
+           {{event.description}}
+         </div>
+       </li>
+     </ul>
+  </div>
+</div>

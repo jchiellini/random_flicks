@@ -1,0 +1,8 @@
+<nav ng-include="'components/navbar/navbar.html'" class="navbar-fixed-top"></nav>
+<div class="col-sm-12 media-video" ng-init="Init()" infinite-scroll="LoadMore()">
+  <div class="content_container">
+    <div class="embed-responsive embed-responsive-16by9 video-wrapper row">
+      <div youtube-video video-id="link" player-width="'100%'" player-height="'500'" class="embed-responsive-item"></div>
+    </div>
+  </div>
+</div>

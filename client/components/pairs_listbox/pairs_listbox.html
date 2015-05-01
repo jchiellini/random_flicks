@@ -1,0 +1,22 @@
+<div class="col-sm-12 pairs_listbox">
+
+    <div class="col-sm-5 no_padding">
+      <input class="form-control key" ng-model="new_pair.key" placeholder="Detail label" />
+    </div>
+    <div class="col-sm-5 no_padding">
+      <input class="form-control" ng-model="new_pair.value" placeholder="Detail value" />
+    </div>
+    <div class="col-sm-2 no_padding">
+      <button class="btn btn-primary add_btn" ng-click="add()" ng-disabled="active_import == ''">+</button>
+    </div>
+
+  <ul class="list-unstyled">
+    <li ng-repeat="item in items">
+      <div>
+        <span class="pair_key">{{item.key}}:</span>
+        <span class="pair_value">{{item.value}}</span>
+        <div class="glyphicon glyphicon-remove pull-right" ng-click="remove(item)"></div>
+      </div>
+    </li>
+  </ul>
+</div>

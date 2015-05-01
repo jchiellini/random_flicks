@@ -1,0 +1,19 @@
+<nav ng-include="'components/navbar/navbar.html'" class="navbar-fixed-top"></nav>
+
+<div class="padding_top_70 margin_top_10" ng-init="Init()">
+  <div class="col-sm-12">
+    <div role="tabpanel">
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist" ng-init="current.selected_tab = tabs[0];">
+        <li role="presentation" ng-class="{'active':current.selected_tab === tab}" ng-repeat="tab in tabs" ng-click="current.selected_tab = tab;"><a role="tab">{{tab}}</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div ng-include="current.selected_path"></div>
+      </div>
+
+    </div>
+  </div>
+</div>

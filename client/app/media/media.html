@@ -1,0 +1,58 @@
+<nav ng-include="'components/navbar/navbar.html'" class="navbar-fixed-top"></nav>
+<div class="col-sm-12 media" ng-init="Init()" infinite-scroll="LoadMore()">
+  <div class="content_container">
+    <div class="col-sm-12 margin_top_20" style="font-size: 22px;">
+      <div class="col-sm-12 no_padding margin_bottom_10 table_container full_width">
+        <div class="table_cell">
+          <span class="glyphicon glyphicon-facetime-video margin_right_10"></span><span class="comix_loud">MEDIA</span>
+        </div>
+        <div class="table_cell vertical_align_middle">
+          <div class="dropdown sort pull-right">
+            <button class="text-left form-control" type="button" id="dropdownSort" data-toggle="dropdown" aria-expanded="true" ng-model="selected.sortBy" ng-init="selected.sortBy = sort_options[0];">
+              <span class="arrow select">{{selected.sortBy.label || 'Select a sort option' }}</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownSort">
+              <li role="presentation" ng-repeat="option in sort_options track by $index" ng-click="selected.sortBy = option;"><a role="menuitem" tabindex="-1" >{{option.label}}</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!--<div class="col-sm-3 no_padding margin_right_10 margin_bottom_10 width_auto" style="top: 3px;">-->
+   <!---->
+
+        <!--&lt;!&ndash;<select class="form-control naked_select prima_nova_semibold" ng-model="selected.sortBy" ng-init="selected.sortBy = '-published.$t';">&ndash;&gt;-->
+          <!--&lt;!&ndash;<option value="-published.$t" >Date</option>&ndash;&gt;-->
+          <!--&lt;!&ndash;<option value="title.$t" >Title</option>&ndash;&gt;-->
+          <!--&lt;!&ndash;<option value="-yt$statistics.viewCount" >Views</option>&ndash;&gt;-->
+        <!--&lt;!&ndash;</select>&ndash;&gt;-->
+      <!--</div>-->
+    </div>
+    <div class="col-sm-12">
+      <!--<div class="col-sm-2 no_padding margin_bottom_10 margin_right_10 width_auto">-->
+        <!--<select class="form-control naked_select prima_nova_semibold" ng-model="selected.sortBy" ng-init="selected.sortBy = '-published.$t';">-->
+          <!--<option value="-published.$t" >Date</option>-->
+          <!--<option value="title.$t" >Title</option>-->
+          <!--<option value="-yt$statistics.viewCount" >Views</option>-->
+        <!--</select>-->
+      <!--</div>-->
+      <div class="col-sm-12 margin_bottom_10 no_padding">
+        <input ng-model="search.snippet.title" class="form-control" placeholder="Pick a flick..." />
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <ul class="list-unstyled">
+        <li ng-repeat="video in media | filter:search | orderBy:selected.sortBy.id" class="video_thumb" ng-click="NavigateToVideo(video)">
+          <div class="img_container">
+            <img ng-src="{{video.snippet.thumbnails.medium.url}}"/>
+          </div>
+          <div class="prima_nova_semibold">
+            <span>{{video.snippet.title | limitTo:45}}</span><span ng-if="video.snippet.title.length > 45">...</span>
+          </div>
+          <div class="info">
+            <span>{{video.statistics.viewCount}} views</span><span class="bull">&#8226;</span><span>{{convertTime(video.snippet.publishedAt)}}</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

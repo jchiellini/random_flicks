@@ -1,0 +1,14 @@
+<div ng-include="'components/banner/banner.html'"></div>
+
+<div class="page_lead main no_horiz_scroll" ng-init="Init()">
+  <section id="top">
+    <nav ng-include="'components/navbar/navbar.html'" ng-class="{'fixed':cache.isTop()}"></nav>
+  </section>
+
+  <section id="events">
+    <div ng-include="'components/events/events.html'"></div>
+  </section>
+  <section id="about">
+    <div ng-include="'app/about/about.html'"></div>
+  </section>
+</div>

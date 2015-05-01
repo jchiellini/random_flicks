@@ -1,0 +1,15 @@
+<div class="banner" ng-controller="BannerCtrl">
+  <div class="background gradient"></div>
+  <!--<div class="placeholder"><img src="assets/images/static_img.jpg" ></div>-->
+  <div class="video_container" ng-if="!cache.isMobile() && cache.isActive('/')">
+    <video class="video" width="100%" autoplay loop muted>
+      <source src="assets/images/bunny.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="background overlay"></div>
+  <div class="background dots"></div>
+  <div class="background bg_logo" ng-if="!cache.isMobile()"></div>
+  <div class="blurb">
+    <span class="shout">- EST. 2004 -</span>
+  </div>
+</div>

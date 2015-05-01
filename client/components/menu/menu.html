@@ -1,0 +1,41 @@
+<div ng-controller="MenuCtrl">
+  <div class="navigation_panel animation" ng-show="cache.isMenuOpen" >
+    <div class="background gradient"></div>
+    <div class="background dots"></div>
+
+
+    <div class="text-right close" ng-click="cache.ToggleMenu(false)">
+      <div><a><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve" class="svg-raw replaced-svg">
+<path fill="#FFFFFF" d="M18.19,19.771l-8.153-8.152l-8.152,8.153l-1.603-1.604l8.152-8.152L0.281,1.862L1.886,0.26l8.152,8.152  l8.154-8.153l1.602,1.604l-8.152,8.153l8.153,8.154L18.19,19.771z"></path>
+</svg></a></div>
+      <!--<button class="btn btn-default" ng-click="cache.ToggleMenu(false)">X</button>-->
+    </div>
+  </div>
+  <div class="text-center menu_options" ng-show="cache.isMenuOpen">
+    <ul class="list-unstyled white_text">
+      <li ng-repeat="section in constants.navigation.left" ng-click="section.click(section.link); cache.isMenuOpen = false;" ng-show="section.visibility()">
+        <!--<div class="section number">-->
+          <!--.0{{$index+1}}-->
+        <!--</div>-->
+        <div class="comix_loud">
+          <span>{{section.title | uppercase}}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="text-center menu_nav" ng-show="cache.isMenuOpen">
+    <ul class="list-unstyled list-inline">
+      <!--<li ng-repeat="nav in constants.navigation.left" ng-show="nav.visibility()"><a ng-click="nav.click(nav.link); cache.ToggleMenu(false);" ng-bind-html="nav.title"></a></li>-->
+      <li ng-repeat="nav in constants.navigation.right" ng-show="nav.visibility('true')"><a ng-click="nav.click(nav.link); cache.ToggleMenu(false);" ng-bind-html="nav.title"></a></li>
+    </ul>
+  </div>
+  <div class="nav_contact text-center full_width" ng-show="cache.isMenuOpen">
+    <a class="phone" href="https://twitter.com/TheRandomFlicks" target="_blank">
+      <img ng-src="assets/images/twitter.png" class="twitter" />
+    </a>
+    <a class="contact" ng-click="cache.ToggleMenu(false); cache.ToggleContact(true);"><span class="comix_loud">CONTACT US</span></a>
+    <a class="phone" href="https://www.facebook.com/RandomFlicks" target="_blank">
+      <img ng-src="assets/images/facebook.png" class="twitter" />
+    </a>
+  </div>
+</div>

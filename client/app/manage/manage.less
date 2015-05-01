@@ -1,0 +1,186 @@
+.nav_colors{
+  box-shadow: rgba(0, 0, 0, 0.498039) 0px 2px 3px;
+  background-color: rgb(239, 215, 170);
+}
+
+.selected{
+  background-color: #dedede !important;
+//  color: white;
+}
+
+.search{
+ vertical-align: bottom;
+  input{
+    border-top-right-radius: 0;
+  }
+}
+
+.add_btn, .add_btn:focus{
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  position: relative;
+  width: 35px;
+  outline:none !important;
+  .glyphicon{
+    top: 1px;
+    font-size: 12px;
+  }
+}
+
+.listbox.filter{
+  ul{
+    position: relative;
+    bottom:0;
+    min-height: 100px;
+    max-height: none;
+    height: auto;
+    li{
+      padding: 20px 10px;
+      cursor: pointer;
+    }
+  }
+}
+
+.tag{
+  background-color: #417db4;
+  margin-right: 10px;
+  border-radius: 4px;
+  padding: 5px 7px;
+  font-weight: normal;
+}
+
+.list-inline{
+  margin-left: 0;
+}
+
+.margin_right_10{
+  margin-right:10px !important;
+}
+
+.margin_top_10{
+  margin-top:10px;
+}
+
+.margin_bottom_10{
+  margin-bottom: 10px;
+}
+
+.title{
+  font-size: 25px;
+  font-family: prima_nova_semibold;
+}
+
+.preview_container{
+  width: 150px;
+  max-height: 150px;
+  overflow: hidden;
+  border: 1px solid #8D92A9;
+  img{
+    width: 150px;
+  }
+}
+
+.topper{
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: #c96058;
+  color:white;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+}
+
+.tab-content{
+  padding:20px;
+}
+
+.image_thumb{
+  display:inline-block;
+  vertical-align: top;
+  width:196px;
+  height:140px;
+//  padding:10px;
+  margin-right: 10px;
+
+  .img_container{
+    width:196px;
+    height:110px;
+    overflow: hidden;
+    display: flex;
+
+    img{
+      width:100%;
+      align-self:center;
+    }
+  }
+
+  .info{
+    padding:5px 0;
+  }
+
+}
+
+
+  .even{
+    background-color: #f2f3f4;
+  }
+  .odd{
+    background-color: #ffffff;
+  }
+
+.editor{
+  border-radius: 6px;
+  border:1px solid #dfe0e1;
+  background-color: #dfe0e1;
+
+  .selector{
+    height: 250px;
+    overflow-y: auto;
+    vertical-align: top;
+    background-color: #dfe0e1;
+
+    .section_title{
+      padding:5px 10px;
+//      color:white;
+      background-color: #cecfd0;
+      border-top-left-radius: 4px;
+    }
+    ul.disabled{
+      li{
+        opacity: 0.3;
+        pointer-events:none;
+      }
+    }
+    ul{
+      li{
+        height: 45px;
+        padding: 0 10px;
+        border-bottom: 1px solid #cccccc;
+        border-top:0;
+        .glyphicon{
+          top:14px;
+          cursor: pointer;
+        }
+        span{
+          top: 11px;
+          position: relative;
+        }
+      }
+    }
+  }
+  .fields{
+    background-color: #eaebec;
+
+    padding:10px;
+    input,textarea,select,.check-box,.listbox{
+      margin-bottom: 10px;
+    }
+    textarea{
+      margin-bottom: 10px;
+      resize: none;
+    }
+    button{
+      width:120px;
+    }
+  }
+}
